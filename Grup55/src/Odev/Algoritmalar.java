@@ -23,7 +23,7 @@ public class Algoritmalar implements Algorithms {
 
         lock.lock();
         
-        System.out.println("~~FCFS Algoritması Çalışıyor~~");
+        System.out.println("~~FCFS Algoritmasi Calisiyor~~");
         
         int sure = 0;
         
@@ -48,7 +48,7 @@ public class Algoritmalar implements Algorithms {
         			
         			
         			for (int i = 0; i < proces.getProcesZamani(); i++) { 
-        				System.out.println("P"+proces.getNumarasi()+" işleniyor " +sure+ ". saniye ");
+        				System.out.println("P"+proces.getNumarasi()+" isleniyor " +sure+ ". saniye ");
         				sure++;
 					}
         			
@@ -59,7 +59,7 @@ public class Algoritmalar implements Algorithms {
         			
         			sure+=proces.getVarisZamani();
         			
-        			System.out.println("P"+proces.getNumarasi()+" tamamlandı! ");
+        			System.out.println("P"+proces.getNumarasi()+" tamamlandi! ");
         			queue.poll();
         			
         			 
@@ -68,11 +68,11 @@ public class Algoritmalar implements Algorithms {
         			
         		}
         		else {
-        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesi için yetersiz kaynak!");
-        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesinin sonlandırılması bekleniyor...(20 saniye bekleyiniz) ");
+        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesi icin yetersiz kaynak!");
+        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesinin sonlandirilmasi bekleniyor...(20 saniye bekleyiniz) ");
         			try {
         	            Thread.sleep(20000);
-        	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandırıldı!");
+        	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandirildi!");
         	            queue.poll();
         				sure+=20; // deadlock bekleme süresi
         	        } catch (InterruptedException ex) {
@@ -81,13 +81,13 @@ public class Algoritmalar implements Algorithms {
         		}
         	}
         	else {
-        		System.out.println("P"+proces.getNumarasi()+ " Alt görevlendiriciye aktarıldı!");
+        		System.out.println("P"+proces.getNumarasi()+ " Alt görevlendiriciye aktarildi!");
         		queue.poll();
         	}
         	
 		}
         
-        System.out.println("~~FCFS Algoritması Bitti~~");
+        System.out.println("~~FCFS Algoritmasi Bitti~~");
         
         lock.unlock();
     }
@@ -97,7 +97,7 @@ public class Algoritmalar implements Algorithms {
 
         lock.lock();
         
-        System.out.println("~~GBG Algoritması Çalışıyor~~");
+        System.out.println("~~GBG Algoritmasi Calisiyor~~");
         
         int sure = 0;
         
@@ -124,7 +124,7 @@ public class Algoritmalar implements Algorithms {
         				 			
         			
 	        			for (int i = 0; i < 1; i++) { // quantalama (q=1)
-	        				System.out.println("P"+proces.getNumarasi()+" işleniyor " +sure+ ". saniye ");
+	        				System.out.println("P"+proces.getNumarasi()+" isleniyor " +sure+ ". saniye ");
 	        				sure++;
 						}
 	        			
@@ -135,7 +135,7 @@ public class Algoritmalar implements Algorithms {
 	        			modemsAvailable+=tryc;
 	        			cdsAvailable+=cd;
 	        			
-	        			System.out.println("P"+proces.getNumarasi()+ " Alt görevlendiriciye aktarıldı!");
+	        			System.out.println("P"+proces.getNumarasi()+ " Alt gorevlendiriciye aktarildi!");
 	        			queue.poll();
 	        			        			
 	        			sure=proces.getVarisZamani()+1;
@@ -143,19 +143,19 @@ public class Algoritmalar implements Algorithms {
 			
         			}
         			else {
-        				System.out.println("P"+proces.getNumarasi()+" tamamlandı! ");
+        				System.out.println("P"+proces.getNumarasi()+" tamamlandi! ");
             			queue.poll();
         				
         			}
         			 		
         		}
         		else {
-        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesi için yetersiz kaynak!");
-        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesinin sonlandırılması bekleniyor...(20 saniye bekleyiniz) ");
+        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesi icin yetersiz kaynak!");
+        			System.out.println("P"+queue.peek().getNumarasi() + " Prosesinin sonlandirilmasi bekleniyor...(20 saniye bekleyiniz) ");
         			
         			try {
         	            Thread.sleep(20000);
-        	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandırıldı!");
+        	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandirildi!");
         	            queue.poll();
     				sure+=20; // deadlock bekleme süresi
         	        } catch (InterruptedException ex) {
@@ -165,7 +165,7 @@ public class Algoritmalar implements Algorithms {
         	
 		}
         
-        System.out.println("~~GBG Algoritması Bitti~~");
+        System.out.println("~~GBG Algoritmasi Bitti~~");
 
         
         lock.unlock();
@@ -176,7 +176,7 @@ public class Algoritmalar implements Algorithms {
 
         lock.lock();
         
-        System.out.println("~~RR Algoritması Çalışıyor~~");
+        System.out.println("~~RR Algoritmasi Calisiyor~~");
         
         int sure = 0;
         int sayac=0; // quantalama kontrolü (q=1)
@@ -222,8 +222,8 @@ public class Algoritmalar implements Algorithms {
             			modemsAvailable-=tryc;
             			cdsAvailable-=cd;
             			
-            			System.out.println("P"+islem.peek().getNumarasi()+" işleniyor " +sure+ ". saniye ");
-            			System.out.println("P"+islem.peek().getNumarasi()+" tamamlandı! ");
+            			System.out.println("P"+islem.peek().getNumarasi()+" isleniyor " +sure+ ". saniye ");
+            			System.out.println("P"+islem.peek().getNumarasi()+" tamamlandi! ");
             			
             			printersAvailable+=prt; // Kaynaklar geri verildi
 	        			scannersAvailable+=mdm;
@@ -237,12 +237,12 @@ public class Algoritmalar implements Algorithms {
             			
         			}
         			else {// kaynak yetersiz
-        				System.out.println("P"+islem.peek().getNumarasi() + " Prosesi için yetersiz kaynak!");
-            			System.out.println("P"+islem.peek().getNumarasi() + " Prosesinin sonlandırılması bekleniyor...(20 saniye bekleyiniz) ");
+        				System.out.println("P"+islem.peek().getNumarasi() + " Prosesi icin yetersiz kaynak!");
+            			System.out.println("P"+islem.peek().getNumarasi() + " Prosesinin sonlandirilmasi bekleniyor...(20 saniye bekleyiniz) ");
             			
             			try {
             	            Thread.sleep(20000);
-            	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandırıldı!");
+            	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandirildi!");
             	            islem.poll();
             	        } catch (InterruptedException ex) {
             	            ;
@@ -270,8 +270,8 @@ public class Algoritmalar implements Algorithms {
             			modemsAvailable-=tryc;
             			cdsAvailable-=cd;
             			
-            			System.out.println("P"+islem.peek().getNumarasi()+" işleniyor " +sure+ ". saniye ");
-            			System.out.println("P"+islem.peek().getNumarasi()+" hazır kuyruğuna alındı! ");
+            			System.out.println("P"+islem.peek().getNumarasi()+" isleniyor " +sure+ ". saniye ");
+            			System.out.println("P"+islem.peek().getNumarasi()+" hazir kuyruguna alindi! ");
             			islem.peek().setProcesZamani(islem.peek().getProcesZamani()-1);
             			islem.peek().setProcesZamani(islem.peek().getVarisZamani()+1);
             			hazir.offer(islem.poll());
@@ -288,12 +288,12 @@ public class Algoritmalar implements Algorithms {
             			
         			}
         			else {// kaynak yetersiz
-        				System.out.println("P"+islem.peek().getNumarasi() + " Prosesi için yetersiz kaynak!");
-            			System.out.println("P"+islem.peek().getNumarasi() + " Prosesinin sonlandırılması bekleniyor...(20 saniye bekleyiniz) ");
+        				System.out.println("P"+islem.peek().getNumarasi() + " Prosesi icin yetersiz kaynak!");
+            			System.out.println("P"+islem.peek().getNumarasi() + " Prosesinin sonlandirilmasi bekleniyor...(20 saniye bekleyiniz) ");
             			
             			try {
             	            Thread.sleep(20000);
-            	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandırıldı!");
+            	            System.out.println("P"+queue.peek().getNumarasi() + " Prosesi sonlandirildi!");
             	            islem.poll();
             	        } catch (InterruptedException ex) {
             	            ;
@@ -316,7 +316,7 @@ public class Algoritmalar implements Algorithms {
         }
         
 
-        System.out.println("~~RR Algoritması bitti~~");
+        System.out.println("~~RR Algoritmasi bitti~~");
 
         
         lock.unlock();
