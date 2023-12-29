@@ -204,7 +204,11 @@ public class Main {
 			System.out.println(proces);
         }*/
         
-        
+        System.out.println("pid		varis		oncelik		cpu		Mbytes		prn		scn		modem		cd		status");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+
         
         
         Algoritmalar alg = new Algoritmalar();
@@ -241,7 +245,7 @@ public class Main {
             ;
         }
 		
-		System.out.println("\n\nProsesler Bitmistir !");
+		//System.out.println("\n\nProsesler Bitmistir !");
     
         
 	}
