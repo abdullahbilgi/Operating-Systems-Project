@@ -21,7 +21,7 @@ public class Algoritmalar implements Algorithms {
 	
 	public void algoritmaFCFS(Queue<Proces> queue){ // FCFS Algoritmasi
 
-        lock.lock();
+        
         
         //System.out.println("~~FCFS Algoritması Çalışıyor~~");
         
@@ -30,7 +30,7 @@ public class Algoritmalar implements Algorithms {
         List<Proces> copyOfQueue = new ArrayList<>(queue);
         
         for (Proces proces : copyOfQueue) { // Banker Algoritması kullanılarak prosesler işlendi 
-			
+        	lock.lock();
         	if(proces.getSira() == 3) {
         		int prt = proces.getYazicilar();
         		int tryc= proces.getTarayicilar();
@@ -96,18 +96,18 @@ public class Algoritmalar implements Algorithms {
         		System.out.println(proces.getNumarasi()+"		"+ "UYARI - Proses alt görevlendiriciye aktarildi!");
         		queue.poll();
         	}
-        	
+        	 lock.unlock();
 		}
         
         //System.out.println("~~FCFS Algoritması Bitti~~");
         
-        lock.unlock();
+       
     }
 	
 	
 	public void algoritmaGBG(Queue<Proces> queue){ // GBG Algoritmasi
 
-        lock.lock();
+        
         
         //System.out.println("~~GBG Algoritması Çalışıyor~~");
         
@@ -116,7 +116,7 @@ public class Algoritmalar implements Algorithms {
         List<Proces> copyOfQueue = new ArrayList<>(queue);
         
         for (Proces proces : copyOfQueue) { // Banker Algoritması kullanılarak prosesler işlendi 
-        	
+        	lock.lock();
         	if(proces.getMbayt() <960) {
         		
         	
@@ -195,19 +195,19 @@ public class Algoritmalar implements Algorithms {
 	        System.out.println(proces.getNumarasi()+"		"+"HATA - Proses (960 MB) tan daha fazla bellek talep ediyor - proses silindi");
 	        queue.poll();
         	}
-        	
+        	lock.unlock();
 		}
         
         //System.out.println("~~GBG Algoritması Bitti~~");
 
         
-        lock.unlock();
+        
     }
 	
 	
 	public void algoritmaRR(Queue<Proces> queue){ // RR Algoritmasi
 
-        lock.lock();
+        
         
         //System.out.println("~~RR Algoritması Çalışıyor~~");
         
@@ -238,7 +238,7 @@ public class Algoritmalar implements Algorithms {
         	
         	if(sure == sayac) {
         		islem.offer(hazir.poll());
-        		
+        		lock.lock();
         		if(islem.peek().getMbayt() <960) {
         		
 	        		if(islem.peek().getProcesZamani() == 1) {
@@ -379,14 +379,14 @@ public class Algoritmalar implements Algorithms {
         
         	sayac++;
         	
-        	
+        	lock.unlock();
         }
         
 
         //System.out.println("~~RR Algoritması bitti~~");
 
         
-        lock.unlock();
+        
     }
 	
 	
