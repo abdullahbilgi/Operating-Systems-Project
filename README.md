@@ -1,6 +1,6 @@
 # Operating Systems Project
 
--Process sorting algorithms
--Process resource management
--Process memory management
+- Process sorting algorithms
+- Process resource management
+- Process memory management
 
